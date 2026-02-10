@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Financial Advisor</title>
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="gradient-text">AI Financial Advisor</h1>
+            <p class="subtitle">Your personal assistant for smart financial decisions.</p>
+        </header>
+
+        <!-- Chat Container -->
+        <main class="chat-interface glass-card">
+            <div id="chat-log" class="chat-log">
+                <!-- Welcome Message -->
+                <div class="message ai-message">
+                    <div class="message-content">
+                        Hello! I'm your AI Financial Advisor. Ask me anything about saving, investing, or budgeting.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Indicator (Hidden by default) -->
+            <div id="loading-indicator" class="loading-indicator hidden">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <section class="input-section glass-card">
+            <div class="chips-container">
+                <button class="chip" onclick="setInput('How do I start investing with ₹5000?')">How to invest
+                    ₹5000?</button>
+                <button class="chip" onclick="setInput('Explain the 50/30/20 budget rule')">50/30/20 Rule</button>
+                <button class="chip" onclick="setInput('What are the best Mutual Funds for beginners?')">Best Mutual
+                    Funds?</button>
+                <button class="chip" onclick="setInput('How can I save tax in India (80C)?')">Save Tax (80C)</button>
+                <button class="chip" onclick="setInput('What is an SIP and how do I start?')">Start an SIP</button>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" id="user-input" placeholder="Ask about saving, investing, budgeting..."
+                    autocomplete="off">
+                <button id="send-btn" aria-label="Send Message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

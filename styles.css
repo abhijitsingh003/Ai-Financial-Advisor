@@ -1,0 +1,430 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0F1110;
+    color: #ECECEC;
+    line-height: 1.6;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    /* Prevent body scroll, handle in chat log */
+}
+
+/* Layout */
+.app-container {
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    /* Mobile padding default */
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .app-container {
+        padding: 64px;
+        gap: 40px;
+    }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+button {
+    font-family: 'Poppins', sans-serif;
+}
+
+.gradient-text {
+    font-weight: 200;
+    /* Thin */
+    font-size: 2.5rem;
+    background: linear-gradient(to bottom, #fff, #888);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #888;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+/* Glassmorphism */
+.glass-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+/* Chat Interface */
+.chat-interface {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .chat-interface {
+        padding: 32px;
+    }
+}
+
+.chat-log {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+/* Custom Scrollbar */
+.chat-log::-webkit-scrollbar {
+    width: 6px;
+    /* Thinner */
+}
+
+.chat-log::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.chat-log::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 140, 0, 0.4);
+    /* Subtle orange hover */
+}
+
+/* Firefox Support */
+.chat-log {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Messages */
+.message {
+    display: flex;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.message.user-message {
+    align-self: flex-end;
+}
+
+.message.ai-message {
+    align-self: flex-start;
+}
+
+.message-content {
+    padding: 16px 24px;
+    border-radius: 18px;
+    font-size: 1rem;
+    line-height: 1.7;
+    /* Increased line-height */
+    position: relative;
+    font-weight: 300;
+    /* Lighter font weight */
+    letter-spacing: 0.02em;
+    /* Breathability */
+}
+
+.user-message .message-content {
+    background: rgba(255, 140, 0, 0.15);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    color: #ECECEC;
+    border-bottom-right-radius: 4px;
+    font-weight: 400;
+    /* Slightly heavier for user but not too much */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ai-message .message-content {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ECECEC;
+    border-bottom-left-radius: 4px;
+}
+
+.message-content strong {
+    font-weight: 600;
+    /* Keep bold for emphasis but balanced */
+    color: #fff;
+}
+
+.message-content em {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.message-content li {
+    margin-left: 20px;
+    list-style-type: disc;
+    margin-bottom: 8px;
+    /* More spacing between list items */
+}
+
+.message-content h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    /* Lighter header */
+    margin-top: 16px;
+    /* More space above headers */
+    margin-bottom: 12px;
+    /* More space below headers */
+    color: #FF8C00;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input Section */
+.input-section {
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .input-section {
+        padding: 24px 32px;
+    }
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#user-input {
+    flex: 1;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    /* More rounded */
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    color: #ECECEC;
+    font-size: 1rem;
+    outline: none;
+    transition: all 200ms ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#user-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#user-input:focus {
+    border-color: #FF8C00;
+    box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+#send-btn {
+    background: rgba(255, 140, 0, 0.15);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    width: 54px;
+    height: 54px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #FF8C00;
+    /* Orange icon */
+    transition: all 200ms ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 140, 0, 0.15);
+    background: rgba(255, 140, 0, 0.25);
+    border-color: rgba(255, 140, 0, 0.4);
+}
+
+#send-btn:active {
+    transform: translateY(0);
+}
+
+/* Chips */
+.chips-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding: 4px;
+    /* Added padding to prevent hover clipping */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.chips-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 8px 16px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 200ms ease;
+}
+
+.chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FF8C00;
+    border-color: #FF8C00;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    padding: 10px 24px;
+    display: flex;
+    gap: 6px;
+    align-self: flex-start;
+}
+
+.hidden {
+    display: none;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 140, 0, 0.8);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 0;
+        /* Full width on mobile */
+        gap: 0;
+    }
+
+    .glass-card {
+        border-radius: 0;
+        /* Remove radius for full screen feel if desired, or keep small */
+        border: none;
+        /* Simplify borders */
+    }
+
+    /* specific overrides to keep rounded corners where it matters */
+    .chat-interface.glass-card {
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .input-section.glass-card {
+        border-radius: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .app-header {
+        padding: 16px;
+    }
+
+    .gradient-text {
+        font-size: 1.8rem;
+        /* Smaller title */
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        padding: 0 16px;
+    }
+
+    .chat-interface {
+        padding: 16px;
+    }
+
+    .message {
+        max-width: 90%;
+        /* Wider messages on mobile */
+    }
+
+    .message-content {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+
+    .input-section {
+        padding: 16px;
+    }
+
+    #send-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .chips-container {
+        padding-bottom: 8px;
+    }
+}
