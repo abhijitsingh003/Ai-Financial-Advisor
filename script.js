@@ -1,4 +1,4 @@
-const API_KEY = "PASTE_YOUR_API_KEY_HERE";
+const API_KEY = "";
 const chatLog = document.getElementById('chat-log');
 const userInput = document.getElementById('user-input');
 const loadingIndicator = document.getElementById('loading-indicator');
